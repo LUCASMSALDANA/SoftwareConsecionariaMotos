@@ -64,6 +64,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         textTelNuevaVenta = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        txtRazSocNuevaVenta = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -248,6 +249,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Razón Social");
 
+        txtRazSocNuevaVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRazSocNuevaVentaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelNuevaVentaLayout = new javax.swing.GroupLayout(panelNuevaVenta);
         panelNuevaVenta.setLayout(panelNuevaVentaLayout);
         panelNuevaVentaLayout.setHorizontalGroup(
@@ -307,7 +314,8 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(textTelNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel15)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRazSocNuevaVenta)))
                         .addContainerGap())))
         );
         panelNuevaVentaLayout.setVerticalGroup(
@@ -346,7 +354,8 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(textDireNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
                     .addComponent(textTelNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
+                    .addComponent(jLabel15)
+                    .addComponent(txtRazSocNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(jLabel4))
         );
@@ -388,6 +397,10 @@ public class Principal extends javax.swing.JFrame {
     private void btnNuevaVentanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaVentanaActionPerformed
                     // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevaVentanaActionPerformed
+
+    private void txtRazSocNuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazSocNuevaVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRazSocNuevaVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -462,6 +475,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField txtDNINuevaVenta;
     private javax.swing.JTextField txtDescNuevaVenta;
     private javax.swing.JTextField txtNombreNuevaVenta;
+    private javax.swing.JTextField txtRazSocNuevaVenta;
     private javax.swing.JTextField txtStockNuevaVenta;
     // End of variables declaration//GEN-END:variables
 }
