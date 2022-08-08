@@ -65,6 +65,20 @@ public class Principal extends javax.swing.JFrame {
         textTelNuevaVenta = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txtRazSocNuevaVenta = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        txtDNIClientes = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        txtNombreClientes = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        txtTelNuevaVenta = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        txtDireNuevaVenta = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        ComBoxFiscoClientes = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        txtRazonSocialClientes = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -249,12 +263,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Razón Social");
 
-        txtRazSocNuevaVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRazSocNuevaVentaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelNuevaVentaLayout = new javax.swing.GroupLayout(panelNuevaVenta);
         panelNuevaVenta.setLayout(panelNuevaVentaLayout);
         panelNuevaVentaLayout.setHorizontalGroup(
@@ -362,6 +370,121 @@ public class Principal extends javax.swing.JFrame {
 
         panelConfig.addTab("tab1", panelNuevaVenta);
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 700, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 444, Short.MAX_VALUE)
+        );
+
+        panelConfig.addTab("tab2", jPanel3);
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel16.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("DNI/CUIT");
+
+        txtDNIClientes.setToolTipText("");
+
+        jLabel17.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Nombre y Apellido");
+
+        jLabel18.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Teléfono");
+
+        jLabel19.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Dirección");
+
+        txtDireNuevaVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireNuevaVentaActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Condición Fiscal");
+
+        ComBoxFiscoClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consumidor Final", "Monotributo", "Responsable Inscripto", " ", " " }));
+        ComBoxFiscoClientes.setSelectedIndex(2);
+        ComBoxFiscoClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComBoxFiscoClientesActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Razón Social");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(170, 170, 170))
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel17))
+                            .addComponent(ComBoxFiscoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRazonSocialClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTelNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDireNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNombreClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(458, 458, 458))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTelNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDireNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ComBoxFiscoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtRazonSocialClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(156, Short.MAX_VALUE))
+        );
+
+        panelConfig.addTab("Clientes", jPanel5);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -394,13 +517,17 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockNuevaVentaActionPerformed
 
+    private void txtDireNuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireNuevaVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireNuevaVentaActionPerformed
+
+    private void ComBoxFiscoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComBoxFiscoClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComBoxFiscoClientesActionPerformed
+
     private void btnNuevaVentanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaVentanaActionPerformed
                     // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevaVentanaActionPerformed
-
-    private void txtRazSocNuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazSocNuevaVentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRazSocNuevaVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,6 +565,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComBoxFiscoClientes;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnDeleteNuevaVenta;
@@ -454,7 +582,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -463,6 +597,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane panelConfig;
     private javax.swing.JPanel panelNuevaVenta;
@@ -472,10 +608,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField textTelNuevaVenta;
     private javax.swing.JTextField txtCantNuevaVenta;
     private javax.swing.JTextField txtCodNuevaVenta;
+    private javax.swing.JTextField txtDNIClientes;
     private javax.swing.JTextField txtDNINuevaVenta;
     private javax.swing.JTextField txtDescNuevaVenta;
+    private javax.swing.JTextField txtDireNuevaVenta;
+    private javax.swing.JTextField txtNombreClientes;
     private javax.swing.JTextField txtNombreNuevaVenta;
     private javax.swing.JTextField txtRazSocNuevaVenta;
+    private javax.swing.JTextField txtRazonSocialClientes;
     private javax.swing.JTextField txtStockNuevaVenta;
+    private javax.swing.JTextField txtTelNuevaVenta;
     // End of variables declaration//GEN-END:variables
 }
