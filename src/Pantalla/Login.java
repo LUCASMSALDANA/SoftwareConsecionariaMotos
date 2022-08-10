@@ -5,20 +5,39 @@
 package Pantalla;
 
 import javax.swing.ImageIcon;
-import Pantalla.Principal;
+import javax.swing.JOptionPane;
+import Dao.UsuarioDao;
+import model.usuario.Usuario;
 /**
  *
  * @author Lucas
  */
 public class Login extends javax.swing.JFrame{
-    /**
-     * Creates new form Interfaz
-     */
+    Usuario usuario = new Usuario();
+    UsuarioDao login = new UsuarioDao();
+    Principal main = new Principal();
+    
+    
     public Login() {
         initComponents();
     }
+    public void validar(){
+    String user = txtUser.getText();
+    String pass = String.valueOf(txtPass.getPassword());
+    if(!"".equals(user) || !"".equals(pass)){ 
+        usuario = login.log(user, pass);
+        if(usuario.getNombre()!= null && usuario.getPass()!=null){
+            main.setLocationRelativeTo(null);
+            main.setVisible(true);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña no encontrados", "Error al logearse", JOptionPane.ERROR_MESSAGE);
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe completar usuario y contraseña","Campos Vacioes",JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
-    Principal main = new Principal();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,7 +54,7 @@ public class Login extends javax.swing.JFrame{
         jLabel3 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        pass = new javax.swing.JPasswordField();
+        txtPass = new javax.swing.JPasswordField();
         btnLogIn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -60,6 +79,12 @@ public class Login extends javax.swing.JFrame{
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 255, 0));
         jLabel4.setText("Contraseña");
+
+        txtPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassActionPerformed(evt);
+            }
+        });
 
         btnLogIn.setText("Iniciar Sesion");
         btnLogIn.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +129,7 @@ public class Login extends javax.swing.JFrame{
                             .addComponent(txtUser)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pass)
+                            .addComponent(txtPass)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(69, 69, 69))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -124,7 +149,7 @@ public class Login extends javax.swing.JFrame{
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogIn)
                 .addGap(48, 48, 48)
@@ -166,13 +191,13 @@ public class Login extends javax.swing.JFrame{
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
     if(evt.getSource() == btnLogIn){
-        
-        
-        main.setLocationRelativeTo(null);
-        main.setVisible(true);
-        this.setVisible(false);
+        validar();
       }     // TODO add your handling code here:
     }//GEN-LAST:event_btnLogInActionPerformed
+
+    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,7 +247,7 @@ public class Login extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField pass;
+    private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
