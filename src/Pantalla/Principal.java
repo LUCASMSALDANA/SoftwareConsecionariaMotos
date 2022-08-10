@@ -7,6 +7,7 @@ package Pantalla;
 import Dao.ClienteDao;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.cliente.Cliente;
 
 /**
@@ -16,6 +17,7 @@ import model.cliente.Cliente;
 public class Principal extends javax.swing.JFrame {
     Cliente cliente = new Cliente();
     ClienteDao clienteDao = new ClienteDao();
+    DefaultTableModel tablamodel = new DefaultTableModel();
     /**
      * Creates new form Principal
      */
@@ -24,8 +26,24 @@ public class Principal extends javax.swing.JFrame {
     }
     
     public void listarClientes(){
-        List<Cliente> listaClientes= clienteDao.listarClientes();
-        
+       for(int i = 0; i<tablamodel.getRowCount();i++){
+            tablamodel.removeRow(i);
+            i--;
+        }
+        List<Cliente> listaClientes = clienteDao.listarClientes();
+        tablamodel = (DefaultTableModel) tablaClientes.getModel();
+        Object[] filaCliente = new Object[6];
+        for(int i = 0; i<listaClientes.size();i++){
+            filaCliente[0]=listaClientes.get(i).getDni();
+            filaCliente[1]=listaClientes.get(i).getNombreApellido();
+            filaCliente[2]=listaClientes.get(i).getTelefono();
+            filaCliente[3]=listaClientes.get(i).getDireccion();
+            filaCliente[4]=listaClientes.get(i).getCondicionFiscal();
+            filaCliente[5]=listaClientes.get(i).getRazonSocial();
+            tablamodel.addRow(filaCliente);
+        }
+        tablaClientes.setModel(tablamodel);
+     
     }
 
     /**
@@ -91,7 +109,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         txtRazonSocialClientes = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaClientes = new javax.swing.JTable();
         btnSaveClientes = new javax.swing.JButton();
         btnEliminarClientes = new javax.swing.JButton();
         btnActualizarClientes = new javax.swing.JButton();
@@ -501,21 +519,18 @@ public class Principal extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Razón Social");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "DNI / CUIT", "Nombre", "Telefono", "Direccion", "Cond F.", "Razon Social"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setPreferredWidth(55);
-            jTable2.getColumnModel().getColumn(4).setPreferredWidth(40);
+        jScrollPane2.setViewportView(tablaClientes);
+        if (tablaClientes.getColumnModel().getColumnCount() > 0) {
+            tablaClientes.getColumnModel().getColumn(0).setPreferredWidth(55);
+            tablaClientes.getColumnModel().getColumn(4).setPreferredWidth(40);
         }
 
         btnSaveClientes.setBackground(new java.awt.Color(0, 0, 0));
@@ -553,43 +568,39 @@ public class Principal extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                                .addGap(145, 145, 145))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel17))
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(ComBoxFiscoClientes, javax.swing.GroupLayout.Alignment.LEADING, 0, 204, Short.MAX_VALUE)
-                                        .addComponent(txtDireClientes, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtTelClientes, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtNombreClientes, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(txtRazonSocialClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                        .addGap(145, 145, 145))
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(btnSaveClientes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEliminarClientes)
-                        .addGap(12, 12, 12)
-                        .addComponent(btnActualizarClientes)
-                        .addGap(14, 14, 14)
-                        .addComponent(btnExcelClientes)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel17))
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(ComBoxFiscoClientes, javax.swing.GroupLayout.Alignment.LEADING, 0, 204, Short.MAX_VALUE)
+                                .addComponent(txtDireClientes, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtTelClientes, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNombreClientes, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(txtRazonSocialClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(btnSaveClientes)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminarClientes)
+                                .addGap(12, 12, 12)
+                                .addComponent(btnActualizarClientes)
+                                .addGap(14, 14, 14)
+                                .addComponent(btnExcelClientes)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -679,8 +690,8 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addContainerGap())
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -969,6 +980,7 @@ public class Principal extends javax.swing.JFrame {
             cliente.setRazonSocial(txtRazonSocialClientes.getText());
             if(clienteDao.RegistrarCliente(cliente)){
             JOptionPane.showMessageDialog(null,"Cliente registrado con Exito","Cliente Registrado", JOptionPane.INFORMATION_MESSAGE);
+            listarClientes(); 
             }
         }else{
             JOptionPane.showMessageDialog(null,"Todos los datos excepto Razon Social son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);
@@ -988,6 +1000,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreClientesActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        listarClientes();   
         panelConfig.setSelectedIndex(2);
     }//GEN-LAST:event_btnClientesActionPerformed
 
@@ -1100,7 +1113,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
@@ -1110,6 +1122,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTabbedPane panelConfig;
     private javax.swing.JPanel panelNuevaVenta;
+    private javax.swing.JTable tablaClientes;
     private javax.swing.JTable tableNuevaVenta;
     private javax.swing.JTable tableVentas;
     private javax.swing.JTextField textDireNuevaVenta;
