@@ -1,5 +1,5 @@
 
-package model;
+package Dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
  *
  * @author Lucas
  */
-public class ConexionBBDD {
+public class BBDDconexion {
     Connection con;
     public Connection getConnection(){
         try{
