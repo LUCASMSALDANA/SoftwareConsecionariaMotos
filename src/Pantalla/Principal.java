@@ -37,8 +37,8 @@ public class Principal extends javax.swing.JFrame {
             filaCliente[0]=listaClientes.get(i).getDni();
             filaCliente[1]=listaClientes.get(i).getNombreApellido();
             filaCliente[2]=listaClientes.get(i).getTelefono();
-            filaCliente[3]=listaClientes.get(i).getDireccion();
-            filaCliente[4]=listaClientes.get(i).getCondicionFiscal();
+            filaCliente[3]=listaClientes.get(i).getDireccion();           
+            filaCliente[4]=mostrarCondicionFiscal(listaClientes.get(i).getCondicionFiscal());
             filaCliente[5]=listaClientes.get(i).getRazonSocial();
             tablamodel.addRow(filaCliente);
         }
@@ -519,6 +519,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Razón Social");
 
+        jScrollPane2.setBackground(new java.awt.Color(153, 153, 153));
+
+        tablaClientes.setBackground(new java.awt.Color(204, 204, 204));
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -527,6 +530,16 @@ public class Principal extends javax.swing.JFrame {
                 "DNI / CUIT", "Nombre", "Telefono", "Direccion", "Cond F.", "Razon Social"
             }
         ));
+        tablaClientes.setToolTipText("");
+        tablaClientes.setEditingColumn(0);
+        tablaClientes.setEditingRow(0);
+        tablaClientes.setGridColor(new java.awt.Color(0, 0, 0));
+        tablaClientes.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tablaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaClientesMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tablaClientes);
         if (tablaClientes.getColumnModel().getColumnCount() > 0) {
             tablaClientes.getColumnModel().getColumn(0).setPreferredWidth(55);
@@ -1016,6 +1029,16 @@ public class Principal extends javax.swing.JFrame {
         panelConfig.setSelectedIndex(5);
     }//GEN-LAST:event_btnConfigActionPerformed
 
+    private void tablaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaClientesMouseClicked
+        int fila = tablaClientes.rowAtPoint(evt.getPoint());
+        txtDNIClientes.setText(tablaClientes.getValueAt(fila, 0).toString());
+        txtNombreClientes.setText(tablaClientes.getValueAt(fila, 1).toString());
+        txtTelClientes.setText(tablaClientes.getValueAt(fila, 2).toString());
+        txtDireClientes.setText(tablaClientes.getValueAt(fila, 3).toString());
+        ComBoxFiscoClientes.setSelectedIndex(devolverComboBox(tablaClientes.getValueAt(fila, 4).toString()));
+        txtRazonSocialClientes.setText(tablaClientes.getValueAt(fila, 5).toString());
+    }//GEN-LAST:event_tablaClientesMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1146,4 +1169,20 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelClientes;
     private javax.swing.JTextField txtTelConfig;
     // End of variables declaration//GEN-END:variables
+
+    private String mostrarCondicionFiscal(String condicionFiscal) {
+        return switch (condicionFiscal) {
+            case "Monotributo" -> "Mono";
+            case "Responsable Inscripto" -> "R.I.";
+            default -> "C.F.";
+        };
+}
+        private int devolverComboBox(String condicionFiscal) {
+        return switch (condicionFiscal) {
+            case "C.F." -> 0;
+            case "Monotributo"-> 1;
+            default -> 2;
+        };
+}
+    
 }
