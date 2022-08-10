@@ -105,6 +105,8 @@ public class Principal extends javax.swing.JFrame {
         jTextField16 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jPanel7 = new javax.swing.JPanel();
+        btnPDFReporteVentas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -678,6 +680,32 @@ public class Principal extends javax.swing.JFrame {
 
         panelConfig.addTab("Stock", jPanel6);
 
+        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
+
+        btnPDFReporteVentas.setBackground(new java.awt.Color(0, 0, 0));
+        btnPDFReporteVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/pdf.png"))); // NOI18N
+        btnPDFReporteVentas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+        btnPDFReporteVentas.setFocusable(false);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnPDFReporteVentas)
+                .addContainerGap(642, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnPDFReporteVentas)
+                .addContainerGap(386, Short.MAX_VALUE))
+        );
+
+        panelConfig.addTab("Ventas", jPanel7);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -736,6 +764,7 @@ public class Principal extends javax.swing.JFrame {
             cliente.setCondicionFiscal(ComBoxFiscoClientes.getSelectedItem().toString());
             cliente.setRazonSocial(txtRazonSocialClientes.getText());
             clienteDao.RegistrarCliente(cliente);
+            JOptionPane.showMessageDialog(null,"Cliente registrado con Exito","Cliente Registrado", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(null,"Todos los datos excepto Razon Social son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);
         }
@@ -785,6 +814,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarClientes;
     private javax.swing.JButton btnExcelClientes;
     private javax.swing.JButton btnNuevaVentana;
+    private javax.swing.JButton btnPDFReporteVentas;
     private javax.swing.JButton btnSaveClientes;
     private javax.swing.JButton btnService;
     private javax.swing.JButton btnStock;
@@ -822,6 +852,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
