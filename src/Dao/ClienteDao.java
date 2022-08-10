@@ -23,9 +23,11 @@ public class ClienteDao {
         con= cn.getConnection();
         ps = con.prepareStatement(sql);
         ps.setInt(1,cliente.getDni());
-        if(ps.execute()){
+        rs = ps.executeQuery();
+        if(rs.next()){
             JOptionPane.showMessageDialog(null,"El DNI ingresado ya esta asociado a otro cliente", "DNI Duplicado",JOptionPane.ERROR_MESSAGE);
-            return false;}
+            return false;
+        }
         sql = "INSERT INTO CLIENTES(DNI,NOMBREAPELLIDO,TELEFONO,DIRECCION,CONDICIONFISCAL,RAZONSOCIAL) VALUES(?,?,?,?,?,?)" ;
         ps = con.prepareStatement(sql);
         ps.setInt(1,cliente.getDni());
