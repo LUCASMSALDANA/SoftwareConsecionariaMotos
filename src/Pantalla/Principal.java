@@ -107,6 +107,8 @@ public class Principal extends javax.swing.JFrame {
         jTable3 = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         btnPDFReporteVentas = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tableVentas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -687,6 +689,25 @@ public class Principal extends javax.swing.JFrame {
         btnPDFReporteVentas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         btnPDFReporteVentas.setFocusable(false);
 
+        tableVentas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Cliente", "Vendedor", "Total"
+            }
+        ));
+        jScrollPane4.setViewportView(tableVentas);
+        if (tableVentas.getColumnModel().getColumnCount() > 0) {
+            tableVentas.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tableVentas.getColumnModel().getColumn(1).setPreferredWidth(150);
+            tableVentas.getColumnModel().getColumn(2).setPreferredWidth(150);
+            tableVentas.getColumnModel().getColumn(3).setPreferredWidth(100);
+        }
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -694,14 +715,18 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnPDFReporteVentas)
-                .addContainerGap(642, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnPDFReporteVentas)
-                .addContainerGap(386, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPDFReporteVentas))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         panelConfig.addTab("Ventas", jPanel7);
@@ -763,8 +788,9 @@ public class Principal extends javax.swing.JFrame {
             cliente.setDireccion(txtDireClientes.getText());
             cliente.setCondicionFiscal(ComBoxFiscoClientes.getSelectedItem().toString());
             cliente.setRazonSocial(txtRazonSocialClientes.getText());
-            clienteDao.RegistrarCliente(cliente);
+            if(clienteDao.RegistrarCliente(cliente)){
             JOptionPane.showMessageDialog(null,"Cliente registrado con Exito","Cliente Registrado", JOptionPane.INFORMATION_MESSAGE);
+            }
         }else{
             JOptionPane.showMessageDialog(null,"Todos los datos excepto Razon Social son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);
         }
@@ -856,6 +882,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField11;
@@ -867,6 +894,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane panelConfig;
     private javax.swing.JPanel panelNuevaVenta;
     private javax.swing.JTable tableNuevaVenta;
+    private javax.swing.JTable tableVentas;
     private javax.swing.JTextField textDireNuevaVenta;
     private javax.swing.JTextField textPrecioNuevaVenta;
     private javax.swing.JTextField textTelNuevaVenta;
