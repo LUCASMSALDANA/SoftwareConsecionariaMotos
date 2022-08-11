@@ -71,6 +71,12 @@ public class ClienteDao {
         }
         
     } 
+    
+    public boolean actualizarCliente(Cliente cliente){
+        
+        
+    }
+    
     public List listarClientes(){
     List<Cliente> listaCliente = new ArrayList();
     String sql = "SELECT * FROM CLIENTES;";
