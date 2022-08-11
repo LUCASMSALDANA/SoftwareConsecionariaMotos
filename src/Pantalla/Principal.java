@@ -1005,8 +1005,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ComBoxFiscoClientesActionPerformed
 
     private void btnEliminarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClientesActionPerformed
-        if(!"".equals("")){
-            
+        if(!txtIDClientes.getText().equals("")){
+           if(JOptionPane.showConfirmDialog(null, "Desea Eliminar el Cliente?", "Seleccione una opción...",
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE)==0){
+               
+           }
         }
     }//GEN-LAST:event_btnEliminarClientesActionPerformed
 
