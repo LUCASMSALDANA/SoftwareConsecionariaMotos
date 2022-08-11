@@ -22,7 +22,7 @@ public class ClienteDao {
     try{     
         con= cn.getConnection();
         ps = con.prepareStatement(sql);
-        ps.setInt(1,cliente.getDni());
+        ps.setString(1,cliente.getDni());
         rs = ps.executeQuery();
         if(rs.next()){
             JOptionPane.showMessageDialog(null,"El DNI ingresado ya esta asociado a otro cliente", "DNI Duplicado",JOptionPane.ERROR_MESSAGE);
@@ -30,7 +30,7 @@ public class ClienteDao {
         }
         sql = "INSERT INTO CLIENTES(DNI,NOMBREAPELLIDO,TELEFONO,DIRECCION,CONDICIONFISCAL,RAZONSOCIAL) VALUES(?,?,?,?,?,?)" ;
         ps = con.prepareStatement(sql);
-        ps.setInt(1,cliente.getDni());
+        ps.setString(1,cliente.getDni());
         ps.setString(2,cliente.getNombreApellido());
         ps.setString(3,cliente.getTelefono());
         ps.setString(4,cliente.getDireccion());
@@ -51,7 +51,27 @@ public class ClienteDao {
     }
     }
     
-     public List listarClientes(){
+    public boolean eliminarCliente(int id){
+        String sql = "DELETE FROM CLIENTES WHERE IDCLIENTE  = ?;";
+        try{
+             con = cn.getConnection();
+             ps = con.prepareStatement(sql);
+             ps.setInt(1, id);
+             ps.execute();
+             return true;
+        }catch(SQLException e){
+            System.out.println(e.toString());
+            return false;
+        }finally{
+            try{
+                con.close();
+            }catch(SQLException e){
+            System.out.println(e.toString());
+            }
+        }
+        
+    } 
+    public List listarClientes(){
     List<Cliente> listaCliente = new ArrayList();
     String sql = "SELECT * FROM CLIENTES;";
     try{
@@ -60,7 +80,7 @@ public class ClienteDao {
         while(rs.next()){
             Cliente cliente = new Cliente();
             cliente.setIdcliente(rs.getInt("IDCliente"));
-            cliente.setDni(rs.getInt("DNI"));
+            cliente.setDni(rs.getString("DNI"));
             cliente.setNombreApellido(rs.getString("NOMBREAPELLIDO"));
             cliente.setTelefono(rs.getString("TELEFONO"));
             cliente.setDireccion(rs.getString("DIRECCION"));
