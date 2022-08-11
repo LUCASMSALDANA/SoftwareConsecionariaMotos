@@ -687,13 +687,6 @@
                                   <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel18" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="ComBoxFiscoClientes" alignment="0" pref="204" max="32767" attributes="0"/>
-                                  <Component id="txtDireClientes" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtTelClientes" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtDNIClientes" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <Component id="txtNombreClientes" alignment="0" max="32767" attributes="0"/>
-                              </Group>
                               <Component id="txtRazonSocialClientes" alignment="0" min="-2" pref="205" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -705,10 +698,22 @@
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Component id="btnExcelClientes" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="ComBoxFiscoClientes" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtDireClientes" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtTelClientes" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtNombreClientes" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtDNIClientes" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <Component id="txtIDClientes" min="-2" pref="25" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="464" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -717,7 +722,13 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtIDClientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtDNIClientes" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -750,7 +761,7 @@
                                       <Component id="btnSaveClientes" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jScrollPane2" alignment="0" min="-2" pref="409" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="409" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="24" max="32767" attributes="0"/>
                       </Group>
@@ -879,13 +890,13 @@
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="7" rowCount="0">
-                            <Column editable="true" title="ID" type="java.lang.Object"/>
-                            <Column editable="true" title="DNI / CUIT" type="java.lang.Object"/>
-                            <Column editable="true" title="Nombre" type="java.lang.Object"/>
-                            <Column editable="true" title="Telefono" type="java.lang.Object"/>
-                            <Column editable="true" title="Direccion" type="java.lang.Object"/>
-                            <Column editable="true" title="Con F." type="java.lang.Object"/>
-                            <Column editable="true" title="Razon Social" type="java.lang.Object"/>
+                            <Column editable="false" title="ID" type="java.lang.Object"/>
+                            <Column editable="false" title="DNI / CUIT" type="java.lang.Object"/>
+                            <Column editable="false" title="Nombre" type="java.lang.Object"/>
+                            <Column editable="false" title="Telefono" type="java.lang.Object"/>
+                            <Column editable="false" title="Direccion" type="java.lang.Object"/>
+                            <Column editable="false" title="Con F." type="java.lang.Object"/>
+                            <Column editable="false" title="Razon Social" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -916,7 +927,7 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -1023,6 +1034,26 @@
                     </Property>
                     <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel35">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial Black" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="ID Cliente"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtIDClientes">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIDClientesActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

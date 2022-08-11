@@ -32,14 +32,15 @@ public class Principal extends javax.swing.JFrame {
         }
         List<Cliente> listaClientes = clienteDao.listarClientes();
         tablamodel = (DefaultTableModel) tablaClientes.getModel();
-        Object[] filaCliente = new Object[6];
+        Object[] filaCliente = new Object[7];
         for(int i = 0; i<listaClientes.size();i++){
-            filaCliente[0]=listaClientes.get(i).getDni();
-            filaCliente[1]=listaClientes.get(i).getNombreApellido();
-            filaCliente[2]=listaClientes.get(i).getTelefono();
-            filaCliente[3]=listaClientes.get(i).getDireccion();           
-            filaCliente[4]=mostrarCondicionFiscal(listaClientes.get(i).getCondicionFiscal());
-            filaCliente[5]=listaClientes.get(i).getRazonSocial();
+            filaCliente[0]=listaClientes.get(i).getIdcliente();
+            filaCliente[1]=listaClientes.get(i).getDni();
+            filaCliente[2]=listaClientes.get(i).getNombreApellido();
+            filaCliente[3]=listaClientes.get(i).getTelefono();
+            filaCliente[4]=listaClientes.get(i).getDireccion();           
+            filaCliente[5]=mostrarCondicionFiscal(listaClientes.get(i).getCondicionFiscal());
+            filaCliente[6]=listaClientes.get(i).getRazonSocial();
             tablamodel.addRow(filaCliente);
         }
         tablaClientes.setModel(tablamodel);
@@ -114,6 +115,8 @@ public class Principal extends javax.swing.JFrame {
         btnEliminarClientes = new javax.swing.JButton();
         btnActualizarClientes = new javax.swing.JButton();
         btnExcelClientes = new javax.swing.JButton();
+        jLabel35 = new javax.swing.JLabel();
+        txtIDClientes = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
@@ -529,7 +532,15 @@ public class Principal extends javax.swing.JFrame {
             new String [] {
                 "ID", "DNI / CUIT", "Nombre", "Telefono", "Direccion", "Con F.", "Razon Social"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tablaClientes.setToolTipText("");
         tablaClientes.setEditingColumn(0);
         tablaClientes.setEditingRow(0);
@@ -544,7 +555,7 @@ public class Principal extends javax.swing.JFrame {
         if (tablaClientes.getColumnModel().getColumnCount() > 0) {
             tablaClientes.getColumnModel().getColumn(0).setPreferredWidth(5);
             tablaClientes.getColumnModel().getColumn(1).setPreferredWidth(55);
-            tablaClientes.getColumnModel().getColumn(5).setPreferredWidth(40);
+            tablaClientes.getColumnModel().getColumn(5).setPreferredWidth(30);
         }
 
         btnSaveClientes.setBackground(new java.awt.Color(0, 0, 0));
@@ -577,6 +588,18 @@ public class Principal extends javax.swing.JFrame {
         btnExcelClientes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 128, 64), 1, true));
         btnExcelClientes.setFocusable(false);
 
+        jLabel35.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel35.setText("ID Cliente");
+
+        txtIDClientes.setToolTipText("");
+        txtIDClientes.setEnabled(false);
+        txtIDClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDClientesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -593,12 +616,6 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel17))
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(ComBoxFiscoClientes, javax.swing.GroupLayout.Alignment.LEADING, 0, 204, Short.MAX_VALUE)
-                        .addComponent(txtDireClientes, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtTelClientes, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtNombreClientes, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(txtRazonSocialClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -608,10 +625,20 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(btnActualizarClientes)
                         .addGap(14, 14, 14)
-                        .addComponent(btnExcelClientes)))
+                        .addComponent(btnExcelClientes))
+                    .addComponent(ComBoxFiscoClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDireClientes)
+                    .addComponent(txtTelClientes)
+                    .addComponent(txtNombreClientes)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIDClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -619,6 +646,11 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel35)
+                            .addComponent(txtIDClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -973,7 +1005,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ComBoxFiscoClientesActionPerformed
 
     private void btnEliminarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClientesActionPerformed
-        if(!"".equals(txtDNIClientes.getText()) || !"".equals(txtNombreClientes.getText()) || !"".equals(txtTelClientes.getText()) || !"".equals(txtDireClientes.getText()) || !"".equals(ComBoxFiscoClientes.getAction().toString())){
+        if(!"".equals("")){
             
         }
     }//GEN-LAST:event_btnEliminarClientesActionPerformed
@@ -1031,13 +1063,18 @@ public class Principal extends javax.swing.JFrame {
 
     private void tablaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaClientesMouseClicked
         int fila = tablaClientes.rowAtPoint(evt.getPoint());
-        txtDNIClientes.setText(tablaClientes.getValueAt(fila, 0).toString());
-        txtNombreClientes.setText(tablaClientes.getValueAt(fila, 1).toString());
-        txtTelClientes.setText(tablaClientes.getValueAt(fila, 2).toString());
-        txtDireClientes.setText(tablaClientes.getValueAt(fila, 3).toString());
-        ComBoxFiscoClientes.setSelectedIndex(devolverComboBox(tablaClientes.getValueAt(fila, 4).toString()));
-        txtRazonSocialClientes.setText(tablaClientes.getValueAt(fila, 5).toString());
+        txtIDClientes.setText((tablaClientes.getValueAt(fila, 0).toString()));
+        txtDNIClientes.setText(tablaClientes.getValueAt(fila, 1).toString());
+        txtNombreClientes.setText(tablaClientes.getValueAt(fila, 2).toString());
+        txtTelClientes.setText(tablaClientes.getValueAt(fila, 3).toString());
+        txtDireClientes.setText(tablaClientes.getValueAt(fila, 4).toString());
+        ComBoxFiscoClientes.setSelectedIndex(devolverComboBox(tablaClientes.getValueAt(fila, 5).toString()));
+        txtRazonSocialClientes.setText(tablaClientes.getValueAt(fila, 6).toString());
     }//GEN-LAST:event_tablaClientesMouseClicked
+
+    private void txtIDClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1119,6 +1156,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1160,6 +1198,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField txtDescNuevaVenta;
     private javax.swing.JTextField txtDireClientes;
     private javax.swing.JTextField txtDireccionConfig;
+    private javax.swing.JTextField txtIDClientes;
     private javax.swing.JTextField txtNombreClientes;
     private javax.swing.JTextField txtNombreNuevaVenta;
     private javax.swing.JTextField txtRazSocNuevaVenta;
