@@ -5,11 +5,13 @@
 package Pantalla;
 
 import Dao.ClienteDao;
+import Dao.ProductoDao;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.cliente.Cliente;
+import model.producto.Producto;
 
 /**
  *
@@ -18,6 +20,8 @@ import model.cliente.Cliente;
 public class Principal extends javax.swing.JFrame {
     Cliente cliente = new Cliente();
     ClienteDao clienteDao = new ClienteDao();
+    Producto producto = new Producto();
+    ProductoDao productoDao = new ProductoDao();
     DefaultTableModel tablamodel = new DefaultTableModel();
     /**
      * Creates new form Principal
@@ -45,7 +49,26 @@ public class Principal extends javax.swing.JFrame {
             tablamodel.addRow(filaCliente);
         }
         tablaClientes.setModel(tablamodel);
-     
+    }
+    
+    public void listarProductos(){
+       for(int i = 0; i<tablamodel.getRowCount();i++){
+            tablamodel.removeRow(i);
+            i--;
+        }
+        List<Producto> listaProductos = productoDao.listarProductos();
+        tablamodel = (DefaultTableModel) tablaStock.getModel();
+        Object[] filaProducto = new Object[7];
+        for(int i = 0; i<listaProductos.size();i++){
+            filaProducto[0]=listaProductos.get(i).getIdproducto();
+            filaProducto[1]=listaProductos.get(i).getDescripcion();
+            filaProducto[2]=listaProductos.get(i).getAnio();
+            filaProducto[3]=listaProductos.get(i).getStock();
+            filaProducto[4]=listaProductos.get(i).getPrecio();           
+            filaProducto[6]=listaProductos.get(i).getColor();
+            tablamodel.addRow(filaProducto);
+        }
+        tablaStock.setModel(tablamodel);
     }
 
     /**
@@ -131,7 +154,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jTextField16 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tablaStock = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         btnPDFReporteVentas = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -660,7 +683,6 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -723,18 +745,33 @@ public class Principal extends javax.swing.JFrame {
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Color");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tablaStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Descripcion", "Anio", "Stock", "Precio", "Color"
             }
-        ));
-        jScrollPane3.setViewportView(jTable3);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tablaStock);
+        if (tablaStock.getColumnModel().getColumnCount() > 0) {
+            tablaStock.getColumnModel().getColumn(0).setPreferredWidth(5);
+            tablaStock.getColumnModel().getColumn(1).setPreferredWidth(150);
+            tablaStock.getColumnModel().getColumn(2).setPreferredWidth(20);
+            tablaStock.getColumnModel().getColumn(3).setPreferredWidth(20);
+            tablaStock.getColumnModel().getColumn(5).setPreferredWidth(50);
+        }
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -1221,7 +1258,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
@@ -1231,6 +1267,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane panelConfig;
     private javax.swing.JPanel panelNuevaVenta;
     private javax.swing.JTable tablaClientes;
+    private javax.swing.JTable tablaStock;
     private javax.swing.JTable tableNuevaVenta;
     private javax.swing.JTable tableVentas;
     private javax.swing.JTextField textDireNuevaVenta;
