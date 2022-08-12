@@ -58,14 +58,14 @@ public class Principal extends javax.swing.JFrame {
         }
         List<Producto> listaProductos = productoDao.listarProductos();
         tablamodel = (DefaultTableModel) tablaStock.getModel();
-        Object[] filaProducto = new Object[7];
+        Object[] filaProducto = new Object[6];
         for(int i = 0; i<listaProductos.size();i++){
             filaProducto[0]=listaProductos.get(i).getIdproducto();
             filaProducto[1]=listaProductos.get(i).getDescripcion();
             filaProducto[2]=listaProductos.get(i).getAnio();
             filaProducto[3]=listaProductos.get(i).getStock();
             filaProducto[4]=listaProductos.get(i).getPrecio();           
-            filaProducto[6]=listaProductos.get(i).getColor();
+            filaProducto[5]=listaProductos.get(i).getColor();
             tablamodel.addRow(filaProducto);
         }
         tablaStock.setModel(tablamodel);
@@ -1109,6 +1109,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockActionPerformed
+        listarProductos();
         panelConfig.setSelectedIndex(3);
     }//GEN-LAST:event_btnStockActionPerformed
 
