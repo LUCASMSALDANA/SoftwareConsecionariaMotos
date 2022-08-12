@@ -582,6 +582,11 @@ public class Principal extends javax.swing.JFrame {
         btnActualizarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Actualizar.png"))); // NOI18N
         btnActualizarClientes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 255), 1, true));
         btnActualizarClientes.setFocusable(false);
+        btnActualizarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarClientesActionPerformed(evt);
+            }
+        });
 
         btnExcelClientes.setBackground(new java.awt.Color(0, 0, 0));
         btnExcelClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Excel.png"))); // NOI18N
@@ -592,6 +597,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("ID Cliente");
 
+        txtIDClientes.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtIDClientes.setToolTipText("");
         txtIDClientes.setEnabled(false);
         txtIDClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -1008,7 +1014,8 @@ public class Principal extends javax.swing.JFrame {
         if(!txtIDClientes.getText().equals("")){
            if(JOptionPane.showConfirmDialog(null, "Desea Eliminar el Cliente?", "Seleccione una opción...",
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE)==0){
-               
+               clienteDao.eliminarCliente(Integer.parseInt(txtIDClientes.getText()));
+               listarClientes();
            }
         }
     }//GEN-LAST:event_btnEliminarClientesActionPerformed
@@ -1078,6 +1085,14 @@ public class Principal extends javax.swing.JFrame {
     private void txtIDClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDClientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDClientesActionPerformed
+
+    private void btnActualizarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarClientesActionPerformed
+        if(txtIDClientes.getText().equals("")){
+           JOptionPane.showMessageDialog(null, "Seleccione una Fila");
+        }else{
+            
+        }
+    }//GEN-LAST:event_btnActualizarClientesActionPerformed
 
     /**
      * @param args the command line arguments
