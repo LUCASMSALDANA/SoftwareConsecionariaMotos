@@ -5,6 +5,7 @@
 package Pantalla;
 
 import Dao.ClienteDao;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -522,6 +523,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Razón Social");
 
+        txtRazonSocialClientes.setEditable(false);
+        txtRazonSocialClientes.setBackground(new java.awt.Color(204, 204, 204));
+        txtRazonSocialClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRazonSocialClientesActionPerformed(evt);
+            }
+        });
+
         jScrollPane2.setBackground(new java.awt.Color(153, 153, 153));
 
         tablaClientes.setBackground(new java.awt.Color(204, 204, 204));
@@ -1007,7 +1016,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDireClientesActionPerformed
 
     private void ComBoxFiscoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComBoxFiscoClientesActionPerformed
-        // TODO add your handling code here:
+        if(ComBoxFiscoClientes.getSelectedIndex()==0){
+            txtRazonSocialClientes.setText("");
+            txtRazonSocialClientes.setEditable(false);
+            txtRazonSocialClientes.setBackground(new Color(204,204,204));
+        }else{
+            txtRazonSocialClientes.setEditable(true);
+            txtRazonSocialClientes.setBackground(new Color(255,255,255));
+        }
     }//GEN-LAST:event_ComBoxFiscoClientesActionPerformed
 
     private void btnEliminarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClientesActionPerformed
@@ -1093,6 +1109,10 @@ public class Principal extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btnActualizarClientesActionPerformed
+
+    private void txtRazonSocialClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazonSocialClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRazonSocialClientesActionPerformed
 
     /**
      * @param args the command line arguments
