@@ -116,7 +116,6 @@ public class Principal extends javax.swing.JFrame {
         btnEliminarClientes = new javax.swing.JButton();
         btnActualizarClientes = new javax.swing.JButton();
         btnExcelClientes = new javax.swing.JButton();
-        jLabel35 = new javax.swing.JLabel();
         txtIDClientes = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
@@ -602,10 +601,6 @@ public class Principal extends javax.swing.JFrame {
         btnExcelClientes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 128, 64), 1, true));
         btnExcelClientes.setFocusable(false);
 
-        jLabel35.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText("ID Cliente");
-
         txtIDClientes.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtIDClientes.setToolTipText("");
         txtIDClientes.setEnabled(false);
@@ -624,34 +619,35 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(145, 145, 145))
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17))
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRazonSocialClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(btnSaveClientes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEliminarClientes)
-                        .addGap(12, 12, 12)
-                        .addComponent(btnActualizarClientes)
-                        .addGap(14, 14, 14)
-                        .addComponent(btnExcelClientes))
+                        .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ComBoxFiscoClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtDireClientes)
                     .addComponent(txtTelClientes)
                     .addComponent(txtNombreClientes)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addGap(18, 18, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIDClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel17))
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRazonSocialClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(btnSaveClientes)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnEliminarClientes)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(btnActualizarClientes)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(btnExcelClientes))
+                                    .addComponent(txtIDClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -661,11 +657,10 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel35)
-                            .addComponent(txtIDClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(txtDNIClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -694,9 +689,10 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(btnActualizarClientes)
                             .addComponent(btnEliminarClientes)
                             .addComponent(btnExcelClientes)
-                            .addComponent(btnSaveClientes)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                            .addComponent(btnSaveClientes))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtIDClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
         );
 
         panelConfig.addTab("Clientes", jPanel5);
@@ -1028,7 +1024,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnEliminarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClientesActionPerformed
         if(!txtIDClientes.getText().equals("")){
-           if(JOptionPane.showConfirmDialog(null, "Desea Eliminar el Cliente?", "Seleccione una opción...",
+           if(JOptionPane.showConfirmDialog(null, "Desea Eliminar el Cliente? Con el ID: "+txtIDClientes.getText(), "Seleccione una opción...",
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE)==0){
                clienteDao.eliminarCliente(Integer.parseInt(txtIDClientes.getText()));
                listarClientes();
@@ -1042,7 +1038,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNuevaVentanaActionPerformed
 
     private void btnSaveClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveClientesActionPerformed
-        if(!"".equals(txtDNIClientes.getText()) || !"".equals(txtNombreClientes.getText()) || !"".equals(txtTelClientes.getText()) || !"".equals(txtDireClientes.getText()) || !"".equals(ComBoxFiscoClientes.getAction().toString()) ){
+        if(txtDNIClientes.getText().isBlank() || txtNombreClientes.getText().isBlank() || txtTelClientes.getText().isBlank() || txtDireClientes.getText().isBlank() ){
+           JOptionPane.showMessageDialog(null,"Todos los datos excepto Razon Social son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);           
+        }else{
             cliente.setDni(txtDNIClientes.getText().trim());
             cliente.setNombreApellido(txtNombreClientes.getText().trim());
             cliente.setTelefono(txtTelClientes.getText().trim());
@@ -1053,8 +1051,6 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Cliente registrado con Exito","Cliente Registrado", JOptionPane.INFORMATION_MESSAGE);
             listarClientes(); 
             }
-        }else{
-            JOptionPane.showMessageDialog(null,"Todos los datos excepto Razon Social son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSaveClientesActionPerformed
 
@@ -1106,8 +1102,22 @@ public class Principal extends javax.swing.JFrame {
         if(txtIDClientes.getText().equals("")){
            JOptionPane.showMessageDialog(null, "Seleccione una Fila");
         }else{
-            
+            if(txtDNIClientes.getText().isBlank() || txtNombreClientes.getText().isBlank() || txtTelClientes.getText().isBlank() || txtDireClientes.getText().isBlank() ){
+                JOptionPane.showMessageDialog(null,"Todos los datos excepto Razon Social son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);            
+            }else{                
+                cliente.setIdcliente(Integer.parseInt(txtIDClientes.getText()));
+                cliente.setDni(txtDNIClientes.getText().trim());
+                cliente.setNombreApellido(txtNombreClientes.getText().trim());
+                cliente.setTelefono(txtTelClientes.getText().trim());
+                cliente.setDireccion(txtDireClientes.getText());
+                cliente.setCondicionFiscal(ComBoxFiscoClientes.getSelectedItem().toString());
+                cliente.setRazonSocial(txtRazonSocialClientes.getText().trim());
+                clienteDao.actualizarCliente(cliente);
+                listarClientes(); 
+                JOptionPane.showMessageDialog(null, "Cliente Actualizado");
+            }
         }
+    
     }//GEN-LAST:event_btnActualizarClientesActionPerformed
 
     private void txtRazonSocialClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazonSocialClientesActionPerformed
@@ -1194,7 +1204,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
