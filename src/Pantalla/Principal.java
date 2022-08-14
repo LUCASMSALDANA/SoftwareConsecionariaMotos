@@ -367,7 +367,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Dirección");
 
-        txtDNINuevaVenta.setText("20367392208");
+        txtDNINuevaVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDNINuevaVentaActionPerformed(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -412,20 +416,20 @@ public class Principal extends javax.swing.JFrame {
                                         .addComponent(textPrecioNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtStockNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                                 .addComponent(btnDeleteNuevaVenta))
                             .addGroup(panelNuevaVentaLayout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombreNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombreNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboxFiscoNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboxFiscoNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDNINuevaVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
+                                .addComponent(txtDNINuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelNuevaVentaLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -626,6 +630,7 @@ public class Principal extends javax.swing.JFrame {
         txtIDClientes.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtIDClientes.setToolTipText("");
         txtIDClientes.setEnabled(false);
+        txtIDClientes.setVisible(false);
         txtIDClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDClientesActionPerformed(evt);
@@ -1153,6 +1158,10 @@ public class Principal extends javax.swing.JFrame {
     private void txtRazonSocialClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazonSocialClientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRazonSocialClientesActionPerformed
+
+    private void txtDNINuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNINuevaVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDNINuevaVentaActionPerformed
 
     /**
      * @param args the command line arguments
