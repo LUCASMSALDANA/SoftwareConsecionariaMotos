@@ -1309,7 +1309,13 @@ public class Principal extends javax.swing.JFrame {
             if(txtDescripcionStock.getText().isBlank() || textAnioStock.getText().isBlank() || txtPrecioStock.getText().isBlank() || txtColorStock.getText().isBlank() || txtStockStock.getText().isBlank() ){
                 JOptionPane.showMessageDialog(null,"Se precisa ingresar todos los Datos.","Campos Vacios",JOptionPane.ERROR_MESSAGE);  
             }else{
-                
+                producto.setIdproducto(Integer.parseInt(txtIDStock.getText().trim()));
+                producto.setDescripcion(txtDescripcionStock.getText().trim());
+                producto.setAnio(Integer.parseInt(textAnioStock.getText().trim()));
+                producto.setPrecio(Float.parseFloat(txtPrecioStock.getText()));
+                producto.setStock(Integer.parseInt(txtStockStock.getText().trim()));
+                producto.setColor(txtColorStock.getText().trim());
+                System.out.println(producto);
             }
         }
     }//GEN-LAST:event_btnActualizarStockActionPerformed
