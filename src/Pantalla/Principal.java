@@ -6,6 +6,7 @@ package Pantalla;
 
 import Dao.ClienteDao;
 import Dao.ProductoDao;
+import Reportes.Excel;
 import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -657,11 +658,16 @@ public class Principal extends javax.swing.JFrame {
         btnExcelClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Excel.png"))); // NOI18N
         btnExcelClientes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 128, 64), 1, true));
         btnExcelClientes.setFocusable(false);
+        btnExcelClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcelClientesActionPerformed(evt);
+            }
+        });
 
         txtIDClientes.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtIDClientes.setToolTipText("");
         txtIDClientes.setEnabled(false);
-        txtIDClientes.setVisible(true);
+        txtIDClientes.setVisible(false);
         txtIDClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDClientesActionPerformed(evt);
@@ -1302,12 +1308,17 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockNuevaVentaActionPerformed
 
+    private void btnStock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStock1ActionPerformed
+        vaciarTxtfields();
+        mostrarTxtyBotonesStock();
+    }//GEN-LAST:event_btnStock1ActionPerformed
+
     private void btnActualizarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarStockActionPerformed
         if(txtIDStock.getText().isBlank()){
             JOptionPane.showMessageDialog(null, "Seleccione una Fila");
         }else{
             if(txtDescripcionStock.getText().isBlank() || textAnioStock.getText().isBlank() || txtPrecioStock.getText().isBlank() || txtColorStock.getText().isBlank() || txtStockStock.getText().isBlank() ){
-                JOptionPane.showMessageDialog(null,"Todos los campos son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);  
+                JOptionPane.showMessageDialog(null,"Todos los campos son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);
             }else{
                 producto.setIdproducto(Integer.parseInt(txtIDStock.getText().trim()));
                 producto.setDescripcion(txtDescripcionStock.getText().trim());
@@ -1316,25 +1327,25 @@ public class Principal extends javax.swing.JFrame {
                 producto.setStock(Integer.parseInt(txtStockStock.getText().trim()));
                 producto.setColor(txtColorStock.getText().trim());
                 productoDao.actualizarProducto(producto);
-                listarProductos(); 
+                listarProductos();
                 JOptionPane.showMessageDialog(null, "Producto Actualizado");
             }
         }
     }//GEN-LAST:event_btnActualizarStockActionPerformed
 
     private void btnEliminarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarStockActionPerformed
-       if(!txtIDStock.getText().equals("")){
-           if(JOptionPane.showConfirmDialog(null, "Desea Eliminar el Producto? Con el ID: "+txtIDClientes.getText(), "Seleccione una opción...",
-				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE)==0){
-               productoDao.eliminarProducto(Integer.parseInt(txtIDStock.getText()));
-               listarProductos();
-           }
+        if(!txtIDStock.getText().equals("")){
+            if(JOptionPane.showConfirmDialog(null, "Desea Eliminar el Producto? Con el ID: "+txtIDClientes.getText(), "Seleccione una opción...",
+                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE)==0){
+            productoDao.eliminarProducto(Integer.parseInt(txtIDStock.getText()));
+            listarProductos();
+        }
         }
     }//GEN-LAST:event_btnEliminarStockActionPerformed
 
     private void btnSaveStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveStockActionPerformed
         if(txtDescripcionStock.getText().isBlank() || textAnioStock.getText().isBlank() || txtPrecioStock.getText().isBlank() || txtColorStock.getText().isBlank() || txtStockStock.getText().isBlank()){
-           JOptionPane.showMessageDialog(null,"Todos los campos son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);           
+            JOptionPane.showMessageDialog(null,"Todos los campos son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);
         }else{
             producto.setDescripcion(txtDescripcionStock.getText().trim());
             producto.setAnio(Integer.parseInt(textAnioStock.getText().trim()) );
@@ -1343,15 +1354,10 @@ public class Principal extends javax.swing.JFrame {
             producto.setColor(txtColorStock.getText().trim());
             if(productoDao.registrarProducto(producto)){
                 JOptionPane.showMessageDialog(null,"Producto registrado con Exito","Producto Registrado", JOptionPane.INFORMATION_MESSAGE);
-            listarProductos();
+                listarProductos();
             }
         }
     }//GEN-LAST:event_btnSaveStockActionPerformed
-
-    private void btnStock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStock1ActionPerformed
-        vaciarTxtfields();
-        mostrarTxtyBotonesStock();
-    }//GEN-LAST:event_btnStock1ActionPerformed
 
     private void tablaStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaStockMouseClicked
         int fila = tablaStock.rowAtPoint(evt.getPoint());
@@ -1360,8 +1366,12 @@ public class Principal extends javax.swing.JFrame {
         textAnioStock.setText(tablaStock.getValueAt(fila, 2).toString());
         txtPrecioStock.setText(tablaStock.getValueAt(fila, 4).toString());
         txtStockStock.setText(tablaStock.getValueAt(fila, 3).toString());
-        txtColorStock.setText(tablaStock.getValueAt(fila, 5).toString());        
+        txtColorStock.setText(tablaStock.getValueAt(fila, 5).toString());
     }//GEN-LAST:event_tablaStockMouseClicked
+
+    private void btnExcelClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelClientesActionPerformed
+        Excel.reporteClientes();
+    }//GEN-LAST:event_btnExcelClientesActionPerformed
 
     /**
      * @param args the command line arguments
