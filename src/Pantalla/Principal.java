@@ -1215,6 +1215,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockActionPerformed
+        limpiarPantallaStock();
         listarProductos();
         panelConfig.setSelectedIndex(3);
     }//GEN-LAST:event_btnStockActionPerformed
@@ -1300,37 +1301,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveStockActionPerformed
 
     private void btnStock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStock1ActionPerformed
-        if(mostrarBotones==false){
-            btnSaveStock.setVisible(true);
-            btnEliminarStock.setVisible(true);
-            btnActualizarStock.setVisible(true);
-            txtStockStock.setVisible(true);
-            txtColorStock.setVisible(true);							
-            txtPrecioStock.setVisible(true);
-            textAnioStock.setVisible(true);
-            txtDescripcionStock.setVisible(true);
-            labelDescripcionStock.setVisible(true);
-            labelAnioStock.setVisible(true);
-            labelPrecioStock.setVisible(true);
-            labelColorStock.setVisible(true);
-            labelStockStock.setVisible(true);
-            mostrarBotones=true;
-        }else{
-            btnSaveStock.setVisible(false);
-            btnEliminarStock.setVisible(false);
-            btnActualizarStock.setVisible(false);
-            txtStockStock.setVisible(false);
-            txtColorStock.setVisible(false);							
-            txtPrecioStock.setVisible(false);
-            textAnioStock.setVisible(false);
-            txtDescripcionStock.setVisible(false);
-            labelDescripcionStock.setVisible(false);
-            labelAnioStock.setVisible(false);
-            labelPrecioStock.setVisible(false);
-            labelColorStock.setVisible(false);
-            labelStockStock.setVisible(false);
-            mostrarBotones=false;
-        }
+        mostrarTxtyBotonesStock();
     }//GEN-LAST:event_btnStock1ActionPerformed
 
     /**
@@ -1481,5 +1452,41 @@ public class Principal extends javax.swing.JFrame {
             default -> 2;
         };
 }
+
+    private void limpiarPantallaStock() {
+            btnSaveStock.setVisible(false);
+            btnEliminarStock.setVisible(false);
+            btnActualizarStock.setVisible(false);
+            txtStockStock.setVisible(false);
+            txtColorStock.setVisible(false);							
+            txtPrecioStock.setVisible(false);
+            textAnioStock.setVisible(false);
+            txtDescripcionStock.setVisible(false);
+            labelDescripcionStock.setVisible(false);
+            labelAnioStock.setVisible(false);
+            labelPrecioStock.setVisible(false);
+            labelColorStock.setVisible(false);
+            labelStockStock.setVisible(false);
+            mostrarBotones=false;
+    }
+
+    private void mostrarTxtyBotonesStock() {
+        boolean flag=false;
+        if(mostrarBotones==false){ flag=true; }
+        btnSaveStock.setVisible(flag);
+        btnEliminarStock.setVisible(flag);
+        btnActualizarStock.setVisible(flag);
+        txtStockStock.setVisible(flag);
+        txtColorStock.setVisible(flag);							
+        txtPrecioStock.setVisible(flag);
+        textAnioStock.setVisible(flag);
+        txtDescripcionStock.setVisible(flag);
+        labelDescripcionStock.setVisible(flag);
+        labelAnioStock.setVisible(flag);
+        labelPrecioStock.setVisible(flag);
+        labelColorStock.setVisible(flag);
+        labelStockStock.setVisible(flag);
+        mostrarBotones=flag;
+    }
     
 }
