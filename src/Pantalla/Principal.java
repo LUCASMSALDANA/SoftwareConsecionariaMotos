@@ -158,6 +158,7 @@ public class Principal extends javax.swing.JFrame {
         btnEliminarStock = new javax.swing.JButton();
         btnActualizarStock = new javax.swing.JButton();
         btnStock1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         btnPDFReporteVentas = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -356,7 +357,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Nombre y Apellido");
 
-        txtNombreNuevaVenta.setText("LUCAS MARTIN SALDAÑA DE PEREZ");
         txtNombreNuevaVenta.setToolTipText("");
 
         jLabel11.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -378,7 +378,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Dirección");
 
-        txtDNINuevaVenta.setText("2036739208");
         txtDNINuevaVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDNINuevaVentaActionPerformed(evt);
@@ -871,6 +870,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -887,17 +892,22 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(labelPrecioStock)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPrecioStock)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(labelColorStock)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtColorStock, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(labelDescripcionStock)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDescripcionStock, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtDescripcionStock, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(labelPrecioStock)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(txtPrecioStock)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(labelColorStock)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtColorStock, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelStockStock)
@@ -941,7 +951,8 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnActualizarStock)
                     .addComponent(btnEliminarStock)
-                    .addComponent(btnSaveStock))
+                    .addComponent(btnSaveStock)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
 
@@ -1293,16 +1304,38 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarStockActionPerformed
 
     private void btnEliminarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarStockActionPerformed
-        // TODO add your handling code here:
+        if(!txtIDStock.getText().equals("")){
+           if(JOptionPane.showConfirmDialog(null, "Desea Eliminar el Producto? Con el ID: "+txtIDClientes.getText(), "Seleccione una opción...",
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE)==0){
+               productoDao.eliminarProducto(Integer.parseInt(txtIDStock.getText()));
+               listarClientes();
+           }
+        }
     }//GEN-LAST:event_btnEliminarStockActionPerformed
 
     private void btnSaveStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveStockActionPerformed
-        // TODO add your handling code here:
+        if(txtDescripcionStock.getText().isBlank() || textAnioStock.getText().isBlank() || txtPrecioStock.getText().isBlank() || txtColorStock.getText().isBlank() || txtStockStock.getText().isBlank()){
+           JOptionPane.showMessageDialog(null,"Todos los datos excepto Razon Social son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);           
+        }else{
+            producto.setDescripcion(txtDescripcionStock.getText().trim());
+            producto.setAnio(Integer.parseInt(textAnioStock.getText().trim()) );
+            producto.setStock(Integer.parseInt(txtStockStock.getText().trim()) );
+            producto.setPrecio(Float.parseFloat(txtPrecioStock.getText().trim()) );
+            producto.setColor(txtColorStock.getText().trim());
+            if(productoDao.registrarProducto(producto)){
+                JOptionPane.showMessageDialog(null,"Producto registrado con Exito","Producto Registrado", JOptionPane.INFORMATION_MESSAGE);
+            listarProductos();
+            }
+        }
     }//GEN-LAST:event_btnSaveStockActionPerformed
 
     private void btnStock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStock1ActionPerformed
         mostrarTxtyBotonesStock();
     }//GEN-LAST:event_btnStock1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1398,6 +1431,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelAnioStock;
     private javax.swing.JLabel labelColorStock;
     private javax.swing.JLabel labelDescripcionStock;
