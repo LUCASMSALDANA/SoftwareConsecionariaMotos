@@ -1307,7 +1307,7 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccione una Fila");
         }else{
             if(txtDescripcionStock.getText().isBlank() || textAnioStock.getText().isBlank() || txtPrecioStock.getText().isBlank() || txtColorStock.getText().isBlank() || txtStockStock.getText().isBlank() ){
-                JOptionPane.showMessageDialog(null,"Se precisa ingresar todos los Datos.","Campos Vacios",JOptionPane.ERROR_MESSAGE);  
+                JOptionPane.showMessageDialog(null,"Todos los campos son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);  
             }else{
                 producto.setIdproducto(Integer.parseInt(txtIDStock.getText().trim()));
                 producto.setDescripcion(txtDescripcionStock.getText().trim());
@@ -1332,7 +1332,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnSaveStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveStockActionPerformed
         if(txtDescripcionStock.getText().isBlank() || textAnioStock.getText().isBlank() || txtPrecioStock.getText().isBlank() || txtColorStock.getText().isBlank() || txtStockStock.getText().isBlank()){
-           JOptionPane.showMessageDialog(null,"Todos los datos excepto Razon Social son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);           
+           JOptionPane.showMessageDialog(null,"Todos los campos son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);           
         }else{
             producto.setDescripcion(txtDescripcionStock.getText().trim());
             producto.setAnio(Integer.parseInt(textAnioStock.getText().trim()) );
@@ -1356,8 +1356,8 @@ public class Principal extends javax.swing.JFrame {
         txtIDStock.setText(tablaStock.getValueAt(fila, 0).toString());
         txtDescripcionStock.setText(tablaStock.getValueAt(fila, 1).toString());
         textAnioStock.setText(tablaStock.getValueAt(fila, 2).toString());
-        txtPrecioStock.setText(tablaStock.getValueAt(fila, 3).toString());
-        txtStockStock.setText(tablaStock.getValueAt(fila, 4).toString());
+        txtPrecioStock.setText(tablaStock.getValueAt(fila, 4).toString());
+        txtStockStock.setText(tablaStock.getValueAt(fila, 3).toString());
         txtColorStock.setText(tablaStock.getValueAt(fila, 5).toString());        
     }//GEN-LAST:event_tablaStockMouseClicked
 

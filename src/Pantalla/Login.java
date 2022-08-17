@@ -7,6 +7,7 @@ package Pantalla;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import Dao.UsuarioDao;
+import java.awt.event.KeyEvent;
 import model.usuario.Usuario;
 /**
  *
@@ -19,6 +20,7 @@ public class Login extends javax.swing.JFrame{
     
     
     public Login() {
+ 
         initComponents();
     }
     public void validar(){
@@ -31,7 +33,7 @@ public class Login extends javax.swing.JFrame{
             main.setVisible(true);
             dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "Usuario o Contraseña no encontrados", "Error al logearse", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecta", "Error al logearse", JOptionPane.ERROR_MESSAGE);
         }
         }else{
             JOptionPane.showMessageDialog(null, "Debe completar usuario y contraseña","Campos Vacioes",JOptionPane.ERROR_MESSAGE);
@@ -57,7 +59,7 @@ public class Login extends javax.swing.JFrame{
         txtPass = new javax.swing.JPasswordField();
         btnLogIn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        labelLinkedin = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -76,6 +78,12 @@ public class Login extends javax.swing.JFrame{
         jLabel3.setForeground(new java.awt.Color(0, 255, 0));
         jLabel3.setText("Usuario");
 
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUserKeyPressed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 255, 0));
         jLabel4.setText("Contraseña");
@@ -83,6 +91,11 @@ public class Login extends javax.swing.JFrame{
         txtPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPassActionPerformed(evt);
+            }
+        });
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
             }
         });
 
@@ -95,22 +108,22 @@ public class Login extends javax.swing.JFrame{
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(250, 250, 250));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/linkedinlogo.png"))); // NOI18N
-        jLabel7.setText("Seguime en");
-        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        labelLinkedin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelLinkedin.setForeground(new java.awt.Color(250, 250, 250));
+        labelLinkedin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelLinkedin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/linkedinlogo.png"))); // NOI18N
+        labelLinkedin.setText("Seguime en");
+        labelLinkedin.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelLinkedin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+            .addComponent(labelLinkedin, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -199,9 +212,19 @@ public class Login extends javax.swing.JFrame{
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            validar();
+        }
+    }//GEN-LAST:event_txtUserKeyPressed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            validar();
+        }
+    }//GEN-LAST:event_txtPassKeyPressed
+
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -243,10 +266,10 @@ public class Login extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel labelLinkedin;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
