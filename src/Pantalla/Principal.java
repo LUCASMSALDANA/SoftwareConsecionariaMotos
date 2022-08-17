@@ -1315,7 +1315,9 @@ public class Principal extends javax.swing.JFrame {
                 producto.setPrecio(Float.parseFloat(txtPrecioStock.getText()));
                 producto.setStock(Integer.parseInt(txtStockStock.getText().trim()));
                 producto.setColor(txtColorStock.getText().trim());
-                System.out.println(producto);
+                productoDao.actualizarProducto(producto);
+                listarProductos(); 
+                JOptionPane.showMessageDialog(null, "Producto Actualizado");
             }
         }
     }//GEN-LAST:event_btnActualizarStockActionPerformed
@@ -1325,7 +1327,7 @@ public class Principal extends javax.swing.JFrame {
            if(JOptionPane.showConfirmDialog(null, "Desea Eliminar el Producto? Con el ID: "+txtIDClientes.getText(), "Seleccione una opción...",
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE)==0){
                productoDao.eliminarProducto(Integer.parseInt(txtIDStock.getText()));
-               listarClientes();
+               listarProductos();
            }
         }
     }//GEN-LAST:event_btnEliminarStockActionPerformed

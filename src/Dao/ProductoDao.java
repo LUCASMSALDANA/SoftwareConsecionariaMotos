@@ -103,5 +103,28 @@ public class ProductoDao {
             }
      }
  }
+
+    public void actualizarProducto(Producto producto) {
+        String sql = "UPDATE PRODUCTOS SET DESCRIPCION=?, ANIO=?, STOCK=?, PRECIO=?, COLOR=? WHERE IDPRODUCTO = ?";
+        try{
+            con= cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, producto.getDescripcion());
+            ps.setInt(2,producto.getAnio());
+            ps.setInt(3,producto.getStock());
+            ps.setFloat(4,producto.getPrecio());
+            ps.setString(5,producto.getColor());
+            ps.setInt(6, producto.getIdproducto());
+            ps.execute();            
+        }catch(SQLException e){
+            System.out.println(e.toString());
+        }finally{
+            try{
+                con.close();
+            }catch(SQLException e){
+                System.out.println(e.toString());
+            }
+        }
+    }
 }
 
