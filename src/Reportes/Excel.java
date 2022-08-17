@@ -156,9 +156,9 @@ public class Excel {
         Sheet sheet = book.createSheet("Clientes");
  
         try {
-            InputStream is = new FileInputStream("src/Img/KawaName.jpg");
+            InputStream is = new FileInputStream("src/Img/KawaName.png");
             byte[] bytes = IOUtils.toByteArray(is);
-            int imgIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_JPEG);
+            int imgIndex = book.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
             is.close();
  
             CreationHelper help = book.getCreationHelper();
@@ -186,7 +186,7 @@ public class Excel {
  
             sheet.addMergedRegion(new CellRangeAddress(1, 2, 1, 3));
  
-            String[] cabecera = new String[]{"ID","Descripcion", "Año","Stock", "Precio", "Color"};
+            String[] cabecera = new String[]{"ID","DNI/CUIT", "Nombre","Telefono", "Direccion","Cond. Fiscal", "Razon Social"};
  
             CellStyle headerStyle = book.createCellStyle();
             headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
@@ -224,7 +224,7 @@ public class Excel {
             datosEstilo.setBorderRight(BorderStyle.THIN);
             datosEstilo.setBorderBottom(BorderStyle.THIN);
  
-            ps = conn.prepareStatement("SELECT IDPRODUCTO, DESCRIPCION, ANIO, STOCK, PRECIO, COLOR FROM productos");
+            ps = conn.prepareStatement("SELECT IDCLIENTE, DNI, NOMBREAPELLIDO, TELEFONO, DIRECCION, CONDICIONFISCAL, RAZONSOCIAL FROM CLIENTES");
             rs = ps.executeQuery();
  
             int numCol = rs.getMetaData().getColumnCount();
@@ -249,7 +249,7 @@ public class Excel {
             sheet.autoSizeColumn(4);
             
             sheet.setZoom(150);
-            String fileName = "productos";
+            String fileName = "clientes";
             String home = System.getProperty("user.home");
             File file = new File(home + "/Downloads/" + fileName + ".xlsx");
             FileOutputStream fileOut = new FileOutputStream(file);
