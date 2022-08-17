@@ -1306,7 +1306,11 @@ public class Principal extends javax.swing.JFrame {
         if(txtIDStock.getText().isBlank()){
             JOptionPane.showMessageDialog(null, "Seleccione una Fila");
         }else{
-            
+            if(txtDescripcionStock.getText().isBlank() || textAnioStock.getText().isBlank() || txtPrecioStock.getText().isBlank() || txtColorStock.getText().isBlank() || txtStockStock.getText().isBlank() ){
+                JOptionPane.showMessageDialog(null,"Se precisa ingresar todos los Datos.","Campos Vacios",JOptionPane.ERROR_MESSAGE);  
+            }else{
+                
+            }
         }
     }//GEN-LAST:event_btnActualizarStockActionPerformed
 
