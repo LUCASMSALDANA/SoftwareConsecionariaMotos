@@ -158,7 +158,7 @@ public class Principal extends javax.swing.JFrame {
         btnEliminarStock = new javax.swing.JButton();
         btnActualizarStock = new javax.swing.JButton();
         btnStock1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtIDStock = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         btnPDFReporteVentas = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -661,7 +661,7 @@ public class Principal extends javax.swing.JFrame {
         txtIDClientes.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtIDClientes.setToolTipText("");
         txtIDClientes.setEnabled(false);
-        txtIDClientes.setVisible(false);
+        txtIDClientes.setVisible(true);
         txtIDClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDClientesActionPerformed(evt);
@@ -809,6 +809,11 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaStock.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaStockMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tablaStock);
         if (tablaStock.getColumnModel().getColumnCount() > 0) {
             tablaStock.getColumnModel().getColumn(0).setMinWidth(25);
@@ -870,11 +875,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
+        txtIDStock.setVisible(false);
+        txtIDStock.setEditable(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -882,44 +884,44 @@ public class Principal extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(btnSaveStock)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEliminarStock)
-                        .addGap(12, 12, 12)
-                        .addComponent(btnActualizarStock))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(labelDescripcionStock)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDescripcionStock, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(labelPrecioStock)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addComponent(labelPrecioStock)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtPrecioStock)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(labelColorStock)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtColorStock, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelStockStock)
-                            .addComponent(labelAnioStock))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textAnioStock)
-                            .addComponent(txtStockStock))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnStock1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                                        .addComponent(labelDescripcionStock)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtDescripcionStock, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelStockStock)
+                                    .addComponent(labelAnioStock))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textAnioStock)
+                                    .addComponent(txtStockStock))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnStock1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(btnSaveStock)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminarStock)
+                                .addGap(12, 12, 12)
+                                .addComponent(btnActualizarStock)))
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(txtIDStock, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -951,9 +953,10 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnActualizarStock)
                     .addComponent(btnEliminarStock)
-                    .addComponent(btnSaveStock)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(112, Short.MAX_VALUE))
+                    .addComponent(btnSaveStock))
+                .addGap(13, 13, 13)
+                .addComponent(txtIDStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         panelConfig.addTab("Stock", jPanel6);
@@ -1304,7 +1307,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarStockActionPerformed
 
     private void btnEliminarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarStockActionPerformed
-        if(!txtIDStock.getText().equals("")){
+       if(!txtIDStock.getText().equals("")){
            if(JOptionPane.showConfirmDialog(null, "Desea Eliminar el Producto? Con el ID: "+txtIDClientes.getText(), "Seleccione una opción...",
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE)==0){
                productoDao.eliminarProducto(Integer.parseInt(txtIDStock.getText()));
@@ -1330,12 +1333,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveStockActionPerformed
 
     private void btnStock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStock1ActionPerformed
+        vaciarTxtfields();
         mostrarTxtyBotonesStock();
     }//GEN-LAST:event_btnStock1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void tablaStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaStockMouseClicked
+        int fila = tablaStock.rowAtPoint(evt.getPoint());
+        txtIDStock.setText(tablaStock.getValueAt(fila, 0).toString());
+        txtDescripcionStock.setText(tablaStock.getValueAt(fila, 1).toString());
+        textAnioStock.setText(tablaStock.getValueAt(fila, 2).toString());
+        txtPrecioStock.setText(tablaStock.getValueAt(fila, 3).toString());
+        txtStockStock.setText(tablaStock.getValueAt(fila, 4).toString());
+        txtColorStock.setText(tablaStock.getValueAt(fila, 5).toString());        
+    }//GEN-LAST:event_tablaStockMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1431,7 +1441,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelAnioStock;
     private javax.swing.JLabel labelColorStock;
     private javax.swing.JLabel labelDescripcionStock;
@@ -1460,6 +1469,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField txtDireClientes;
     private javax.swing.JTextField txtDireccionConfig;
     private javax.swing.JTextField txtIDClientes;
+    private javax.swing.JTextField txtIDStock;
     private javax.swing.JTextField txtNombreClientes;
     private javax.swing.JTextField txtNombreNuevaVenta;
     private javax.swing.JTextField txtPrecioStock;
@@ -1522,5 +1532,13 @@ public class Principal extends javax.swing.JFrame {
         labelStockStock.setVisible(flag);
         mostrarBotones=flag;
     }
-    
+
+    private void vaciarTxtfields() {
+        txtIDStock.setText("");
+        txtDescripcionStock.setText("");
+        textAnioStock.setText("");
+        txtPrecioStock.setText("");
+        txtStockStock.setText("");
+        txtColorStock.setText("");        
+    }
 }
