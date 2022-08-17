@@ -1258,7 +1258,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIDClientesActionPerformed
 
     private void btnActualizarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarClientesActionPerformed
-        if(txtIDClientes.getText().equals("")){
+        if(txtIDClientes.getText().isEmpty()){
            JOptionPane.showMessageDialog(null, "Seleccione una Fila");
         }else{
             if(txtDNIClientes.getText().isBlank() || txtNombreClientes.getText().isBlank() || txtTelClientes.getText().isBlank() || txtDireClientes.getText().isBlank() ){
@@ -1303,7 +1303,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtStockNuevaVentaActionPerformed
 
     private void btnActualizarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarStockActionPerformed
-        // TODO add your handling code here:
+        if(txtIDStock.getText().isBlank()){
+            JOptionPane.showMessageDialog(null, "Seleccione una Fila");
+        }else{
+            
+        }
     }//GEN-LAST:event_btnActualizarStockActionPerformed
 
     private void btnEliminarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarStockActionPerformed
