@@ -1517,6 +1517,7 @@ public class Principal extends javax.swing.JFrame {
     private void mostrarTxtyBotonesStock() {
         boolean flag=false;
         if(mostrarBotones==false){ flag=true; }
+        if(flag==true){btnStock1.setText("Ocultar");}else{btnStock1.setText("Crear/Modificar");}
         btnSaveStock.setVisible(flag);
         btnEliminarStock.setVisible(flag);
         btnActualizarStock.setVisible(flag);
