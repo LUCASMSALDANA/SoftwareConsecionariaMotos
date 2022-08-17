@@ -36,8 +36,7 @@ public class ClienteDao {
         ps.setString(4,cliente.getDireccion());
         ps.setString(5,cliente.getCondicionFiscal());
         ps.setString(6,cliente.getRazonSocial());
-        ps.execute();
-       
+        ps.execute(); 
         return true;
     }catch(SQLException e){
         JOptionPane.showMessageDialog(null, e.toString());
@@ -54,9 +53,18 @@ public class ClienteDao {
     public boolean eliminarCliente(int id){
         String sql = "DELETE FROM CLIENTES WHERE IDCLIENTE  = ?;";
         try{
+            int auto_increment=0;
              con = cn.getConnection();
              ps = con.prepareStatement(sql);
              ps.setInt(1, id);
+             ps.execute();
+             sql = "SELECT MAX(IDCLIENTE) AS IDCLIENTE FROM CLIENTES";
+             ps = con.prepareStatement(sql);
+             rs=ps.executeQuery();                     
+             while(rs.next()){auto_increment = (rs.getInt("IDCliente"));}
+             sql="ALTER TABLE CLIENTES AUTO_INCREMENT =?;";
+             ps = con.prepareStatement(sql);
+             ps.setInt(1, auto_increment);
              ps.execute();
              return true;
         }catch(SQLException e){
@@ -73,8 +81,29 @@ public class ClienteDao {
     } 
     
     public boolean actualizarCliente(Cliente cliente){
-        
-        
+        String sql = "UPDATE CLIENTES SET DNI=?, NOMBREAPELLIDO =?, TELEFONO=?, DIRECCION=?, CONDICIONFISCAL=?,RAZONSOCIAL=? WHERE IDCLIENTE = ?";
+        try{
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cliente.getDni());
+            ps.setString(2, cliente.getNombreApellido());
+            ps.setString(3, cliente.getTelefono());
+            ps.setString(4, cliente.getDireccion());
+            ps.setString(5, cliente.getCondicionFiscal());
+            ps.setString(6, cliente.getRazonSocial());
+            ps.setInt(7,cliente.getIdcliente());
+            ps.execute();
+            return true;
+        }catch(SQLException e){
+            System.out.println(e.toString());
+        }finally{
+            try{
+                con.close();
+            }catch(SQLException e){
+            System.out.println(e.toString());
+            }
+        }
+        return false;
     }
     
     public List listarClientes(){
