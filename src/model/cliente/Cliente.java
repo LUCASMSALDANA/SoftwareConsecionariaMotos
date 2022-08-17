@@ -11,14 +11,14 @@ package model.cliente;
 public class Cliente {
     
     private int idcliente;
-    private int dni;
+    private String dni;
     private String nombreApellido;
     private String telefono;
     private String direccion;
     private String condicionFiscal;
     private String razonSocial;
 
-    public Cliente(int idcliente, int dni, String nombreApellido, String telefono, String direccion, String condicionFiscal, String razonSocial) {
+    public Cliente(int idcliente, String dni, String nombreApellido, String telefono, String direccion, String condicionFiscal, String razonSocial) {
         this.idcliente = idcliente;
         this.dni = dni;
         this.nombreApellido = nombreApellido;
@@ -39,11 +39,11 @@ public class Cliente {
         this.idcliente = idcliente;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
