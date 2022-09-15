@@ -168,7 +168,8 @@ public class Excel {
             anchor.setCol1(4);
             anchor.setRow1(1);
             Picture pict = draw.createPicture(anchor, imgIndex);
-            pict.resize(1, 3);
+            pict.resize(3, 3);
+            sheet.addMergedRegion(new CellRangeAddress(1, 3, 4, 6));
  
             CellStyle tituloEstilo = book.createCellStyle();
             tituloEstilo.setAlignment(HorizontalAlignment.CENTER);
@@ -206,7 +207,7 @@ public class Excel {
             font.setFontHeightInPoints((short) 12);
             headerStyle.setFont(font);
  
-            Row filaEncabezados = sheet.createRow(4);
+            Row filaEncabezados = sheet.createRow(5);
  
             for (int i = 0; i < cabecera.length; i++) {
                 Cell celdaEnzabezado = filaEncabezados.createCell(i);
@@ -219,7 +220,7 @@ public class Excel {
             ResultSet rs;
             Connection conn = con.getConnection();
  
-            int numFilaDatos = 5;
+            int numFilaDatos = 6;
  
             CellStyle datosEstilo = book.createCellStyle();
             datosEstilo.setBorderBottom(BorderStyle.THIN);
@@ -250,6 +251,8 @@ public class Excel {
             sheet.autoSizeColumn(2);
             sheet.autoSizeColumn(3);
             sheet.autoSizeColumn(4);
+            sheet.autoSizeColumn(5);
+            sheet.autoSizeColumn(6);
             
             sheet.setZoom(150);
             String fileName = "clientes";
