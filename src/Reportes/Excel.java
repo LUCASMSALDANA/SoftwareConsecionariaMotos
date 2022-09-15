@@ -165,7 +165,7 @@ public class Excel {
             Drawing draw = sheet.createDrawingPatriarch();
  
             ClientAnchor anchor = help.createClientAnchor();
-            anchor.setCol1(0);
+            anchor.setCol1(4);
             anchor.setRow1(1);
             Picture pict = draw.createPicture(anchor, imgIndex);
             pict.resize(1, 3);
@@ -173,23 +173,26 @@ public class Excel {
             CellStyle tituloEstilo = book.createCellStyle();
             tituloEstilo.setAlignment(HorizontalAlignment.CENTER);
             tituloEstilo.setVerticalAlignment(VerticalAlignment.CENTER);
+            tituloEstilo.setFillForegroundColor(IndexedColors.BLACK.getIndex());
+            tituloEstilo.setFillPattern(FillPatternType.SOLID_FOREGROUND);
             Font fuenteTitulo = book.createFont();
             fuenteTitulo.setFontName("Arial");
+            fuenteTitulo.setColor(IndexedColors.WHITE.getIndex());
             fuenteTitulo.setBold(true);
-            fuenteTitulo.setFontHeightInPoints((short) 14);
+            fuenteTitulo.setFontHeightInPoints((short) 16);
             tituloEstilo.setFont(fuenteTitulo);
  
             Row filaTitulo = sheet.createRow(1);
-            Cell celdaTitulo = filaTitulo.createCell(1);
+            Cell celdaTitulo = filaTitulo.createCell(0);
             celdaTitulo.setCellStyle(tituloEstilo);
             celdaTitulo.setCellValue("Reporte de Clientes");
  
-            sheet.addMergedRegion(new CellRangeAddress(1, 2, 1, 3));
+            sheet.addMergedRegion(new CellRangeAddress(1, 3, 0, 3));
  
             String[] cabecera = new String[]{"ID","DNI/CUIT", "Nombre","Telefono", "Direccion","Cond. Fiscal", "Razon Social"};
  
             CellStyle headerStyle = book.createCellStyle();
-            headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
+            headerStyle.setFillForegroundColor(IndexedColors.BLACK.getIndex());
             headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
             headerStyle.setBorderBottom(BorderStyle.THIN);
             headerStyle.setBorderLeft(BorderStyle.THIN);
