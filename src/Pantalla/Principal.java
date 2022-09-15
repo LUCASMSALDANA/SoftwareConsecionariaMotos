@@ -310,6 +310,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Código");
 
+        txtCodNuevaVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCodNuevaVentaKeyPressed(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Descripción");
@@ -1432,6 +1438,12 @@ public class Principal extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_txtDNINuevaVentaKeyPressed
+
+    private void txtCodNuevaVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodNuevaVentaKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+        
+        }
+    }//GEN-LAST:event_txtCodNuevaVentaKeyPressed
 
     /**
      * @param args the command line arguments
