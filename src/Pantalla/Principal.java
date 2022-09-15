@@ -1394,7 +1394,10 @@ public class Principal extends javax.swing.JFrame {
         }else{
             cliente=clienteDao.buscarClienteDNI(txtDNINuevaVenta.getText());
             if(cliente!=null){
-                System.out.println("fiesta la picha");
+                txtNombreNuevaVenta.setText(cliente.getNombreApellido());
+                textDireNuevaVenta.setText(cliente.getDireccion());
+                textTelNuevaVenta.setText(cliente.getTelefono());
+                comboxFiscoNuevaVenta.setSelectedIndex(devolverComboBox(cliente.getCondicionFiscal()));
             }else{
                 JOptionPane.showMessageDialog(null,"El DNI/CUIT que busca no se encuentra registrado.","Cliente Inexistente",JOptionPane.ERROR_MESSAGE);
             }
@@ -1547,6 +1550,7 @@ public class Principal extends javax.swing.JFrame {
         private int devolverComboBox(String condicionFiscal) {
         return switch (condicionFiscal) {
             case "C.F." -> 0;
+            case "Consumidor Final"->0;
             case "Monotributo"-> 1;
             default -> 2;
         };
