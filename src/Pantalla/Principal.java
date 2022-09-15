@@ -1219,15 +1219,19 @@ public class Principal extends javax.swing.JFrame {
         if(txtDNIClientes.getText().isBlank() || txtNombreClientes.getText().isBlank() || txtTelClientes.getText().isBlank() || txtDireClientes.getText().isBlank() ){
            JOptionPane.showMessageDialog(null,"Todos los datos excepto Razon Social son Obligatorios.","Campos Vacios",JOptionPane.ERROR_MESSAGE);           
         }else{
-            cliente.setDni(txtDNIClientes.getText().trim());
-            cliente.setNombreApellido(txtNombreClientes.getText().trim());
-            cliente.setTelefono(txtTelClientes.getText().trim());
-            cliente.setDireccion(txtDireClientes.getText());
-            cliente.setCondicionFiscal(ComBoxFiscoClientes.getSelectedItem().toString());
-            cliente.setRazonSocial(txtRazonSocialClientes.getText().trim());
-            if(clienteDao.RegistrarCliente(cliente)){
-            JOptionPane.showMessageDialog(null,"Cliente registrado con Exito","Cliente Registrado", JOptionPane.INFORMATION_MESSAGE);
-            listarClientes(); 
+            if(ComBoxFiscoClientes.getSelectedIndex()!=0 && txtRazonSocialClientes.getText().isBlank() ){
+                JOptionPane.showMessageDialog(null,"Debe completar Razon Social. Este campo solo es nulo si el cliente es un Consumidor Final","Falta Razon Social",JOptionPane.ERROR_MESSAGE);   
+            }else{
+                cliente.setDni(txtDNIClientes.getText().trim());
+                cliente.setNombreApellido(txtNombreClientes.getText().trim());
+                cliente.setTelefono(txtTelClientes.getText().trim());
+                cliente.setDireccion(txtDireClientes.getText());
+                cliente.setCondicionFiscal(ComBoxFiscoClientes.getSelectedItem().toString());
+                cliente.setRazonSocial(txtRazonSocialClientes.getText().trim());
+                if(clienteDao.RegistrarCliente(cliente)){
+                    JOptionPane.showMessageDialog(null,"Cliente registrado con Exito","Cliente Registrado", JOptionPane.INFORMATION_MESSAGE);
+                    listarClientes(); 
+                }
             }
         }
     }//GEN-LAST:event_btnSaveClientesActionPerformed
