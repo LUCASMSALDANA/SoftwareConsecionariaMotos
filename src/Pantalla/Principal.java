@@ -1552,6 +1552,7 @@ public class Principal extends javax.swing.JFrame {
             case "C.F." -> 0;
             case "Consumidor Final"->0;
             case "Monotributo"-> 1;
+            case "Mono" ->1;
             default -> 2;
         };
 }
