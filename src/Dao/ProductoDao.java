@@ -50,7 +50,7 @@ public class ProductoDao {
          ps.setInt(2, producto.getAnio());
          ps.setString(3, producto.getColor());
          rs = ps.executeQuery();
-         while(rs.next()){
+         if(rs.next()){
             JOptionPane.showMessageDialog(null,"Producto repetido. Verifique: \n\tDescripción.\n\tAño.\n\tColor.", "Producto Duplicado",JOptionPane.ERROR_MESSAGE);
             return false;
          }

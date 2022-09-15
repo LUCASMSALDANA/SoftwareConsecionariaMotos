@@ -128,5 +128,37 @@ public class ClienteDao {
     }
         return listaCliente;
     }
+
+    public Cliente buscarClienteDNI(String dni){
+        String sql = "SELECT * FROM CLIENTES WHERE DNI=?";
+        try{
+            con = cn.getConnection();
+            ps=con.prepareStatement(sql);
+            ps.setString(1, dni);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                Cliente cliente = new Cliente();
+                cliente.setIdcliente(rs.getInt("IDCliente"));
+                cliente.setDni(dni);
+                cliente.setNombreApellido(rs.getString("NOMBREAPELLIDO"));
+                cliente.setTelefono(rs.getString("TELEFONO"));
+                cliente.setDireccion(rs.getString("DIRECCION"));
+                cliente.setCondicionFiscal(rs.getString("CONDICIONFISCAL"));
+                cliente.setRazonSocial(rs.getString("RAZONSOCIAL"));
+                return cliente;            
+            }else{
+                return null;
+            }
+        }catch(SQLException e){
+            System.out.println(e.toString());
+        }finally{
+            try{
+                con.close();
+            }catch(SQLException e){
+            System.out.println(e.toString());
+            }
+        }
+        return null;
+    }
     
 }

@@ -86,7 +86,12 @@ public class Cliente {
     public void setRazonSocial(String razonSocial) {
         this.razonSocial = razonSocial;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "idcliente=" + idcliente + ", dni=" + dni + ", nombreApellido=" + nombreApellido + ", telefono=" + telefono + ", direccion=" + direccion + ", condicionFiscal=" + condicionFiscal + ", razonSocial=" + razonSocial + '}';
+    }
     
-    
+        
     
 }
