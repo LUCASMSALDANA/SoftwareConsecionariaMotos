@@ -8,6 +8,7 @@ import Dao.ClienteDao;
 import Dao.ProductoDao;
 import Reportes.Excel;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -121,7 +122,7 @@ public class Principal extends javax.swing.JFrame {
         textTelNuevaVenta = new javax.swing.JTextField();
         txtRazSocNuevaVenta = new javax.swing.JTextField();
         labelRazonNuevaVenta = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        botonBuscarDni = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -385,6 +386,11 @@ public class Principal extends javax.swing.JFrame {
                 txtDNINuevaVentaActionPerformed(evt);
             }
         });
+        txtDNINuevaVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDNINuevaVentaKeyPressed(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -397,12 +403,12 @@ public class Principal extends javax.swing.JFrame {
         labelRazonNuevaVenta.setForeground(new java.awt.Color(255, 255, 255));
         labelRazonNuevaVenta.setText("Razón Social");
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/lupa.png"))); // NOI18N
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonBuscarDni.setBackground(new java.awt.Color(204, 204, 204));
+        botonBuscarDni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/lupa.png"))); // NOI18N
+        botonBuscarDni.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonBuscarDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonBuscarDniActionPerformed(evt);
             }
         });
 
@@ -442,7 +448,7 @@ public class Principal extends javax.swing.JFrame {
                                             .addGroup(panelNuevaVentaLayout.createSequentialGroup()
                                                 .addComponent(txtDNINuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(botonBuscarDni, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(textTelNuevaVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(panelNuevaVentaLayout.createSequentialGroup()
                                         .addComponent(comboxFiscoNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -520,7 +526,7 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNuevaVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel11)
                                 .addComponent(txtDNINuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(botonBuscarDni, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(textTelNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1392,8 +1398,26 @@ public class Principal extends javax.swing.JFrame {
         Excel.reporteClientes();
     }//GEN-LAST:event_btnExcelClientesActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonBuscarDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarDniActionPerformed
         if(txtDNINuevaVenta.getText().isBlank()){
+            JOptionPane.showMessageDialog(null,"DNI/Cuit Vacio, no se puede realizar la busqueda.","Campo Vacio",JOptionPane.ERROR_MESSAGE);
+        }else{
+            cliente=clienteDao.buscarClienteDNI(txtDNINuevaVenta.getText());
+            if(cliente!=null){
+                txtNombreNuevaVenta.setText(cliente.getNombreApellido());
+                textDireNuevaVenta.setText(cliente.getDireccion());
+                textTelNuevaVenta.setText(cliente.getTelefono());
+                comboxFiscoNuevaVenta.setSelectedIndex(devolverComboBox(cliente.getCondicionFiscal()));
+                txtRazSocNuevaVenta.setText(cliente.getRazonSocial());
+            }else{
+                JOptionPane.showMessageDialog(null,"El DNI/CUIT que busca no se encuentra registrado.","Cliente Inexistente",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_botonBuscarDniActionPerformed
+
+    private void txtDNINuevaVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNINuevaVentaKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+            if(txtDNINuevaVenta.getText().isBlank()){
             JOptionPane.showMessageDialog(null,"DNI/Cuit Vacio, no se puede realizar la busqueda.","Campo Vacio",JOptionPane.ERROR_MESSAGE);
         }else{
             cliente=clienteDao.buscarClienteDNI(txtDNINuevaVenta.getText());
@@ -1406,7 +1430,8 @@ public class Principal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"El DNI/CUIT que busca no se encuentra registrado.","Cliente Inexistente",JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+        }
+    }//GEN-LAST:event_txtDNINuevaVentaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -1445,6 +1470,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComBoxFiscoClientes;
+    private javax.swing.JButton botonBuscarDni;
     private javax.swing.JButton btnActualizarClientes;
     private javax.swing.JButton btnActualizarConfig;
     private javax.swing.JButton btnActualizarStock;
@@ -1464,7 +1490,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnVentas;
     private javax.swing.JComboBox<String> comboxFiscoNuevaVenta;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
