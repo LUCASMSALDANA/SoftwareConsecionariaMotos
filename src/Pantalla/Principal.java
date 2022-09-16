@@ -1415,6 +1415,7 @@ public class Principal extends javax.swing.JFrame {
                 textTelNuevaVenta.setText(cliente.getTelefono());
                 comboxFiscoNuevaVenta.setSelectedIndex(devolverComboBox(cliente.getCondicionFiscal()));
                 txtRazSocNuevaVenta.setText(cliente.getRazonSocial());
+                System.out.println(cliente);
             }else{
                 JOptionPane.showMessageDialog(null,"El DNI/CUIT que busca no se encuentra registrado.","Cliente Inexistente",JOptionPane.ERROR_MESSAGE);
             }
@@ -1432,6 +1433,7 @@ public class Principal extends javax.swing.JFrame {
                 textDireNuevaVenta.setText(cliente.getDireccion());
                 textTelNuevaVenta.setText(cliente.getTelefono());
                 comboxFiscoNuevaVenta.setSelectedIndex(devolverComboBox(cliente.getCondicionFiscal()));
+                txtRazSocNuevaVenta.setText(cliente.getRazonSocial());
             }else{
                 JOptionPane.showMessageDialog(null,"El DNI/CUIT que busca no se encuentra registrado.","Cliente Inexistente",JOptionPane.ERROR_MESSAGE);
             }
